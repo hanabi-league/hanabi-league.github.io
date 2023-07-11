@@ -25,7 +25,7 @@ leaderboard = (
 )
 
 # Convert the DataFrame to a list of dicts
-players = leaderboard.to_dict('records')
+players = player_data.sort_values('player_rating', ascending=False).to_dict('records')
 
 # Load the template from the filesystem
 env = Environment(loader=FileSystemLoader('.'))
