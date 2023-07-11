@@ -58,7 +58,7 @@ top_players.sort_values(['metric_name', 'metric_value'], ascending=[True, False]
 
 
 # Now you can pass top_players to the template
-env = Environment(loader=FileSystemLoader('.'))
+env = Environment(loader=FileSystemLoader('templates'))
 template = env.get_template('index.html')
 html = template.render(players=players, top_players=top_players.to_dict('records'))
 with open('index.html', 'w') as f:
