@@ -21,7 +21,7 @@
     "difficulty_modifier_5p": 0.1,
     "starting_game_id": 700000,
     "ending_game_id": 1000000,
-    "latest_game_id": 952928,
+    "latest_game_id": 700000,
     "total_games_played": 106,
-    "latest_run": "2023-07-11 13:26:22"
+    "latest_run": "2023-07-11 22:41:26"
 }
