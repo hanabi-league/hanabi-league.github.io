@@ -201,7 +201,8 @@ class DataManager:
         game_ids.sort()
     
         print(len(game_ids), "games to parse")
-    
+
+        game_id = self.constants['starting_game_id']
         for i, game_id in enumerate(game_ids):
             noVar_rating = self.variant_data.loc[self.variant_data['variant_name'] == 'No Variant', 'variant_rating'].values[0]
     
