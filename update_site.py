@@ -2,8 +2,8 @@ import pandas as pd
 from jinja2 import Environment, FileSystemLoader
 
 # Load the data from the CSV files
-player_data = pd.read_csv('/data/player_data.csv')
-player_game_data = pd.read_csv('/data/player_game_data.csv')
+player_data = pd.read_csv('data/player_data.csv')
+player_game_data = pd.read_csv('data/player_game_data.csv')
 
 # Join player_data to player_game_data
 joined_data = pd.merge(player_data, player_game_data, on='player_name', how='left')
