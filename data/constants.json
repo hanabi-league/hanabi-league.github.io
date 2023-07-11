@@ -1,0 +1,27 @@
+{
+    "player_base_rating": 1400,
+    "variant_base_ratings": {
+        "No Variant": 1000,
+        "Rainbow": 1100,
+        "Prism": 1100,
+        "White": 1100,
+        "Muddy Rainbow": 1200,
+        "Pink": 1200,
+        "Brown": 1200,
+        "Light Pink": 1300,
+        "Omni": 1300,
+        "Null": 1400,
+        "Clue Starved": 1600
+    },
+    "min_player_count": 3,
+    "max_player_count": 5,
+    "min_suits": 5,
+    "max_suits": 6,
+    "u_v": 0.02,
+    "difficulty_modifier_5p": 0.1,
+    "starting_game_id": 700000,
+    "ending_game_id": 1000000,
+    "latest_game_id": 952928,
+    "total_games_played": 106,
+    "latest_run": "2023-07-10 21:03:56"
+}
