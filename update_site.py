@@ -56,8 +56,11 @@ top_players['metric_name'] = top_players['metric_name'].astype('category')
 top_players['metric_name'].cat.set_categories(sort_order, inplace=True)
 top_players.sort_values(['metric_name', 'metric_value'], ascending=[True, False], inplace=True)
 
-env = Environment(loader=FileSystemLoader('.'))
-template = env.get_template('index.html')
-html = template.render(players=players, top_players=top_players.to_dict('records'))
+# env = Environment(loader=FileSystemLoader('.'))
+# template = env.get_template('index.html')
+# html = template.render(players=players, top_players=top_players.to_dict('records'))
+# with open('index.html', 'w') as f:
+    # f.write(html)
+
 with open('index.html', 'w') as f:
-    f.write(html)
+    f.write(leaderboard.to_html())
