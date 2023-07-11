@@ -1,4 +1,5 @@
 import pandas as pd
+from jinja2 import Environment, FileSystemLoader
 
 # Load the data from the CSV files
 player_data = pd.read_csv('/data/player_data.csv')
@@ -12,11 +13,27 @@ hunted_scores = joined_data[joined_data['max_score'] == 1].groupby('player_name'
 hunted_scores = hunted_scores.reset_index().rename(columns={'variant_name': 'hunted_scores'})
 
 # Merge hunted_scores back into the player data
-player_data = pd.merge(player_data, hunted_scores, on='player_name', how='left')
+leaderboard = (
+    pd
+        .merge(player_data, hunted_scores, on='player_name', how='left')
+        [[
+            'player_name', 
+            'player_rating', 
+            'top_streak', 
+            'hunted_scores'
+        ]]
+)
 
-player_data[['player_name', 'player_rating', 'top_streak', 'hunted_scores']]
+# Convert the DataFrame to a list of dicts
+players = leaderboard.to_dict('records')
 
-# Convert the DataFrame to an HTML table
-html_table = player_data.to_html(index=False)
+# Load the template from the filesystem
+env = Environment(loader=FileSystemLoader('.'))
+template = env.get_template('index.html')
 
-html_table
+# Render the template with the data
+html = template.render(players=players)
+
+# Write the HTML to a file
+with open('index.html', 'w') as f:
+    f.write(html)
