@@ -23,8 +23,9 @@ leaderboard = (
         ]]
 )
 leaderboard['player_rating'] = leaderboard['player_rating'].astype(int)
+leaderboard = leaderboard.sort_values('player_rating', ascending=False)
 
-players = player_data.sort_values('player_rating', ascending=False).to_dict('records')
+# players = player_data.sort_values('player_rating', ascending=False).to_dict('records')
 
 
 # # Create three separate DataFrames, each sorted by one of the metrics
