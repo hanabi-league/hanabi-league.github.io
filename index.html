@@ -3,9 +3,12 @@
 <html>
 <head>
     <title>Leaderboard</title>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-    <table>
+    <table border="1" class="dataframe">
         <thead>
             <tr>
                 <th>Player Name</th>
@@ -95,5 +98,11 @@
             
         </tbody>
     </table>
+
+    <script>
+        $(document).ready(function() {
+            $('.dataframe').DataTable();
+        });
+    </script>
 </body>
 </html>
