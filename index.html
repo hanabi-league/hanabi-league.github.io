@@ -1,7 +1,29 @@
+<!-- leaderboard.html -->
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Leaderboard</title>
+</head>
 <body>
-<h1>Hello Sonya</h1>
-<p>It's me! Tiny mathematics!</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Player Name</th>
+                <th>Player Rating</th>
+                <th>Top Streak</th>
+                <th>Hunted Scores</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+            <tr>
+                <td>{{ player.player_name }}</td>
+                <td>{{ player.player_rating }}</td>
+                <td>{{ player.top_streak }}</td>
+                <td>{{ player.hunted_scores }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
