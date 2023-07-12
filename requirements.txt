@@ -3,3 +3,5 @@ python-dateutil
 pandas
 numpy
 Jinja2
+gspread
+oauth2client
