@@ -52,7 +52,8 @@ for index, row in new_players.iterrows():
             'number_of_games': 0, 
             'number_of_max_scores': 0
         }
-        player_data = player_data.append(new_row, ignore_index=True)
+        player_data = pd.concat([player_data, new_row], ignore_index=True)
+
 
 # Save updated player data
 player_data.to_csv('data/player_data.csv', index=False)
