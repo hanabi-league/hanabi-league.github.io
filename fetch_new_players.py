@@ -20,9 +20,6 @@ sheet_instance = sheet.worksheet('Signup responses')
 # Get all the records of the data
 records_data = sheet_instance.get_all_records()
 
-# View the data
-print(records_data)
-
 # Convert to DataFrame
 new_players = pd.DataFrame.from_records(records_data)
 
