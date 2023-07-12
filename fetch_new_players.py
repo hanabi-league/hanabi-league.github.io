@@ -40,17 +40,16 @@ player_data = pd.read_csv('data/player_data.csv')
 # Check for new players and add them to the CSV
 for index, row in new_players.iterrows():
     if row['player_name'] not in player_data['player_name'].values:
-        new_row = {
-            'player_name': row['player_name'], 
-            'player_name_og': row['player_name_og'], 
-            'player_rating': 1400, 
-            'top_streak': 0, 
-            'current_streak': 0, 
-            'number_of_games': 0, 
-            'number_of_max_scores': 0
-        }
+        new_row = pd.DataFrame({
+            'player_name': [row['player_name']], 
+            'player_name_og': [row['player_name_og']], 
+            'player_rating': [1400], 
+            'top_streak': [0], 
+            'current_streak': [0], 
+            'number_of_games': [0], 
+            'number_of_max_scores': [0]
+        })
         player_data = pd.concat([player_data, new_row], ignore_index=True)
-
 
 # Save updated player data
 player_data.to_csv('data/player_data.csv', index=False)
