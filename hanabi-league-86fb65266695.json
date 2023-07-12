@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "hanabi-league",
+  "private_key_id": "86fb6526669523c89ccda9dd93889b9092d7ac3e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDP2TX6i5wN7f8D\nJQHe2KblSuAPcL7TO0ZCLfX/w0TGQFwtRcA1JNP8XqXa/pQ9rKcvMHJE9ylnPRBm\nNXCb9lxGCuyK0lSCvkdnSXSXEH98UOU8gXT5GC+69DceQYwWEaYOsnVjgt4xCkju\npCckMIiY0b9tO369N2r5K2wyN+FR4kkR6xzlZVbcYUpMYO/L4JZ1UGuSOOS3dTrr\nkYMJ9PpG2gGN5bGVINyoJHmCE1ks3wTouAZK82FSK5xumCqXmk2mN7LWkbTqrJH7\nus5OG4JYLyC6pqM1uXMWXlxGvHYWHPv6SR0lflYnWoDvRoAejjY4175NlQw0UJTy\ndgnPQrphAgMBAAECggEABvsvfDUcvn4IMvmW/L5vqqNvb61Uh4FF7JqhGOBc6sDG\nJ9IgMNjGEwO10+t5nLG0ItpgeC8KEbjkGF7Co8ZsVoDu7YG/i22rNc2qkBligtEv\nxe6+OFCm58Nkp4xBkYsxtewqE7fVUTXcecGDPAyyRdnDsX5OVTorimd6OJyWYZrl\n47QXOJFQQhy1gFFmDvwUNIdQxlSiaDvrWZe208cu8YWCLtCHljhaoIE0yulu76Z/\nQAVnpZAi3NsB75Neg2sB59uMgQfeF/jjiFp04NKVWynCrehF4UeedSSUhSwFrHRj\n00sEdKLlvZrxvWrd+Uw0yri2wcyNPNlPGsJErwf5cQKBgQDsnvFw7cakwD3Q1kse\no7jwsT41IhfFrlb8A5zOmhVWyu7tOfbKCswFfN60U4CTP319oBJ2/Qs4ndDsr4xb\noZiw2GZuwW+5vkR/035WykmAld0eoz9uffHuYsG9BKJoF06SP7q7b9oOkup2EynY\nSSuf2F6fBQps1xKB0n4E1b2u+QKBgQDg3wSczRR/EF4EYCVMiHZb4BiwplWo+tVv\nBdY+gx6d9xU+GWksecuCyFKdmRNbl61sl2Qm5uR5pgkgxx9WCUe7O0I8bT46G+xj\nTgFNeE+0KPB7XslMb7uvwmgB77qmhbQ+GIr66efN/YyVGHU6lPbirSuzGJdLcCKp\nuOo3PRH4qQKBgDPodlzovKAd0DHFIPuavRKIP3ZWgVKLeWeVv0uPf8jngdymz53p\nGnLFvvFeNCGZVwU9HW/e+Rw1esTBig/79kwtXONFKiZcOBi2o8uUWuWLetOiymKJ\n3I4IOiomHx6opkLtGiDOW87AqhC3CYH6I0jQpYlLCMtxrwytyZlz7kW5AoGAM4Ji\naBiB7WkuYAo2AQXxNrJqdWxkisSKR1gq7z7RsJV8hDEF6m4rs9V3NyptSLnBu/Ih\nuteA1my2ApAaGXceu0Cjt3u+mUj0KPshSUGZ4EbQbzITIjMl5ui9MlRbiPFvjBnL\nHBagRoshvLVRhQ3CT8IjFG85mMoi5oW5ANY4W6ECgYBNffeZwMxYtIypnPXrs2lE\nLSLMEOee3AZ69RZUX/ySCdZA66CoH5QpMWkc0f5DcyflNdl1yPjKdPsyKXNAQ614\n4jfuzkGA6zc2Z6rpmqOUgKweq0q/mk4sR4xj8RVo6bFVmIMZIz1kpZN7DhQqzu3h\nq15eEMFC0xmFRnRJIiT4jA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "hanabi-league@hanabi-league.iam.gserviceaccount.com",
+  "client_id": "118069055150263293336",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hanabi-league%40hanabi-league.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
