@@ -5,14 +5,14 @@
     <h1 class="text-center mb-5">Hanabi Leaderboards</h1>
     <!-- Leader Cards -->
     <div class="row mb-5">
-        {% for category, leader in leaders.items() %}
+        {% for category, data in leaders.items() %}
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-4">{{ category }}</h5>
-                    <p class="mb-0 player-name">{{ leader.player_name_og }}</p>
-                    <p class="mt-1 alt-name">{{ leader.player_name }}</p>
-                    <p class="score-large">{{ leader.score }}</p>
+                    <h5 class="card-title mb-4">{{ data.title }}</h5>
+                    <p class="mb-0 player-name">{{ data.leader.player_name_og }}</p>
+                    <p class="mt-1 alt-name">{{ data.leader.player_name }}</p>
+                    <p class="score-large">{{ data.leader.score }}</p>
                 </div>
             </div>
         </div>
