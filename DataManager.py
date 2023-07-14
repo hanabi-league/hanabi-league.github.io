@@ -166,12 +166,12 @@ class DataManager:
     
         game_data = pd.DataFrame(rows)
     
-        # Just new games
-        game_data = game_data[game_data['game_id'] > self.constants['latest_game_id']]
-        game_data = game_data[game_data['game_id'] >= self.constants['starting_game_id']]
-        game_data = game_data[game_data['game_id'] <= self.constants['ending_game_id']]
-    
         if not game_data.empty:
+            # Just new games
+            game_data = game_data[game_data['game_id'] > self.constants['latest_game_id']]
+            game_data = game_data[game_data['game_id'] >= self.constants['starting_game_id']]
+            game_data = game_data[game_data['game_id'] <= self.constants['ending_game_id']]
+        
             game_data = game_data[game_data['number_of_players'].between(self.constants['min_player_count'], self.constants['max_player_count'])]
             game_data = game_data[game_data['player_names'].apply(lambda x: set(x).issubset(players))]
     
