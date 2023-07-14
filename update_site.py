@@ -35,7 +35,7 @@ def get_leaderboard_category(data, category, score_col):
     else: # 'Hunted Scores'
         tie_breakers = ['player_rating', 'top_streak']
     leaderboard = data.sort_values([score_col] + tie_breakers, ascending=False)
-    leaderboard = leaderboard.sample(frac=1)  # Ensure randomness for final tie-breaker
+    # leaderboard = leaderboard.sample(frac=1)  # Ensure randomness for final tie-breaker
     return leaderboard[['player_name_og', 'player_name', score_col]].rename(columns={score_col: 'score'}).to_dict('records')
 
 categories = {
