@@ -28,7 +28,14 @@ leaderboard['player_rating'] = leaderboard['player_rating'].astype(int)
 leaderboard = leaderboard.sort_values('player_rating', ascending=False)
 
 def get_leaderboard_category(data, category, score_col):
-    leaderboard = data.sort_values(score_col, ascending=False)
+    if category == 'Player Rating':
+        tie_breakers = ['top_streak', 'hunted_scores']
+    elif category == 'Top Streak':
+        tie_breakers = ['player_rating', 'hunted_scores']
+    else: # 'Hunted Scores'
+        tie_breakers = ['player_rating', 'top_streak']
+    leaderboard = data.sort_values([score_col] + tie_breakers, ascending=False)
+    leaderboard = leaderboard.sample(frac=1)  # Ensure randomness for final tie-breaker
     return leaderboard[['player_name_og', 'player_name', score_col]].rename(columns={score_col: 'score'}).to_dict('records')
 
 categories = {
@@ -53,15 +60,3 @@ rendered_html = template.render(leaders=leaders, leaderboards=leaderboards)
 # Write the rendered HTML to a file
 with open('index.html', 'w') as f:
     f.write(rendered_html)
-
-
-
-
-# env = Environment(loader=FileSystemLoader('.'))
-# template = env.get_template('index.html')
-# html = template.render(players=players, top_players=top_players.to_dict('records'))
-# with open('index.html', 'w') as f:
-    # f.write(html)
-
-# with open('index.html', 'w') as f:
-#     f.write(leaderboard.to_html())
