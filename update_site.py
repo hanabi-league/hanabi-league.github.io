@@ -43,10 +43,17 @@ categories = {
     'Top Streak': 'top_streak',
     'Hunted Scores': 'hunted_scores'
 }
+titles = {
+    'Player Rating': 'Highest Rating',
+    'Top Streak': 'Longest Win Streak',
+    'Hunted Scores': 'Most Hunted Scores'
+}
+
+leaders = {cat: {'title': titles[cat], 'leader': leader[0]} for cat, leader in leaderboards.items()}
 
 leaderboards = {cat: get_leaderboard_category(leaderboard, cat, col) for cat, col in categories.items()}
 
-leaders = {cat: leader[0] for cat, leader in leaderboards.items()}
+# leaders = {cat: leader[0] for cat, leader in leaderboards.items()}
 
 # Set up Jinja
 env = Environment(loader=FileSystemLoader('templates'))
