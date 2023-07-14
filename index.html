@@ -1,102 +1,409 @@
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>player_name</th>
-      <th>player_name_og</th>
-      <th>player_rating</th>
-      <th>top_streak</th>
-      <th>hunted_scores</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4</th>
-      <td>BlueNovember</td>
-      <td>BlueNovember</td>
-      <td>1450</td>
-      <td>4</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Nitrate</td>
-      <td>Nitrate</td>
-      <td>1450</td>
-      <td>4</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>piper</td>
-      <td>piper</td>
-      <td>1356</td>
-      <td>6</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>kimbifille</td>
-      <td>kimbifille</td>
-      <td>1322</td>
-      <td>6</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>pianoblook</td>
-      <td>pianoblook</td>
-      <td>1276</td>
-      <td>6</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>avanderwalde</td>
-      <td>avanderwalde</td>
-      <td>1180</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>shosh</td>
-      <td>shosh</td>
-      <td>1148</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>rkass</td>
-      <td>rkass</td>
-      <td>1140</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>bubbus</td>
-      <td>bubbus</td>
-      <td>995</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>linaleee</td>
-      <td>linaleee</td>
-      <td>945</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>willamin</td>
-      <td>willamin</td>
-      <td>945</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leaderboards</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .player-name {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .alt-name {
+      font-size: 0.75rem;
+      color: #777;
+    }
+    .score {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #17a2b8; /* This color is a Bootstrap color, teal */
+    }
+    /* Make content vertically centered */
+    .table td, .table th {
+      vertical-align: middle;
+    }
+    .card-header {
+      background-color: #f8f9fa;
+    }
+    .card-title {
+      color: #343a40; /* Bootstrap's dark color */
+      font-size: 2.0rem;
+      font-weight: bold;
+    }
+    .alt-name {
+      font-size: 0.75rem;
+      color: #777;
+      margin-top: 0.25rem; /* reduce spacing above alt-name */
+    }
+    .score-large {
+      font-size: 2rem; /* you can adjust this value */
+      font-weight: bold;
+      color: #17a2b8; /* Bootstrap's 'info' color */
+    }
+  </style>
+</head>
+<body>
+  
+<div class="container my-5">
+    <!-- Header -->
+    <h1 class="text-center mb-5">Hanabi Leaderboards</h1>
+    <!-- Leader Cards -->
+    <div class="row mb-5">
+        
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-4">Player Rating</h5>
+                    <p class="mb-0 player-name">BlueNovember</p>
+                    <p class="mt-1 alt-name">GreenNovember</p>
+                    <p class="score-large">1450</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-4">Top Streak</h5>
+                    <p class="mb-0 player-name">piper</p>
+                    <p class="mt-1 alt-name">sandpiper</p>
+                    <p class="score-large">6</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-4">Hunted Scores</h5>
+                    <p class="mb-0 player-name">BlueNovember</p>
+                    <p class="mt-1 alt-name">GreenNovember</p>
+                    <p class="score-large">nan</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Leaderboards -->
+    <div id="leaderboards" class="accordion">
+        
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#playerrating">
+                    Player Rating
+                </button>
+            </div>
+            <div id="playerrating" class="collapse" data-parent="#leaderboards">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">BlueNovember</div>
+                                <div class="alt-name">GreenNovember</div>
+                            </td>
+                            <td class="score">1450</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">Nitrate</div>
+                                <div class="alt-name">Nitrous</div>
+                            </td>
+                            <td class="score">1450</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">piper</div>
+                                <div class="alt-name">sandpiper</div>
+                            </td>
+                            <td class="score">1356</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">kimbifille</div>
+                                <div class="alt-name">nox</div>
+                            </td>
+                            <td class="score">1322</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">pianoblook</div>
+                                <div class="alt-name">dapperblook</div>
+                            </td>
+                            <td class="score">1276</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">avanderwalde</div>
+                                <div class="alt-name">aly</div>
+                            </td>
+                            <td class="score">1180</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">shosh</div>
+                                <div class="alt-name">shoshing</div>
+                            </td>
+                            <td class="score">1148</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">rkass</div>
+                                <div class="alt-name">rkassrated</div>
+                            </td>
+                            <td class="score">1140</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">bubbus</div>
+                                <div class="alt-name">pbg</div>
+                            </td>
+                            <td class="score">995</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">linaleee</div>
+                                <div class="alt-name">linaleeeeee</div>
+                            </td>
+                            <td class="score">945</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">willamin</div>
+                                <div class="alt-name">will</div>
+                            </td>
+                            <td class="score">945</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#topstreak">
+                    Top Streak
+                </button>
+            </div>
+            <div id="topstreak" class="collapse" data-parent="#leaderboards">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">piper</div>
+                                <div class="alt-name">sandpiper</div>
+                            </td>
+                            <td class="score">6</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">kimbifille</div>
+                                <div class="alt-name">nox</div>
+                            </td>
+                            <td class="score">6</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">pianoblook</div>
+                                <div class="alt-name">dapperblook</div>
+                            </td>
+                            <td class="score">6</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">BlueNovember</div>
+                                <div class="alt-name">GreenNovember</div>
+                            </td>
+                            <td class="score">4</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">Nitrate</div>
+                                <div class="alt-name">Nitrous</div>
+                            </td>
+                            <td class="score">4</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">avanderwalde</div>
+                                <div class="alt-name">aly</div>
+                            </td>
+                            <td class="score">2</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">shosh</div>
+                                <div class="alt-name">shoshing</div>
+                            </td>
+                            <td class="score">1</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">rkass</div>
+                                <div class="alt-name">rkassrated</div>
+                            </td>
+                            <td class="score">1</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">bubbus</div>
+                                <div class="alt-name">pbg</div>
+                            </td>
+                            <td class="score">1</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">linaleee</div>
+                                <div class="alt-name">linaleeeeee</div>
+                            </td>
+                            <td class="score">1</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">willamin</div>
+                                <div class="alt-name">will</div>
+                            </td>
+                            <td class="score">1</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#huntedscores">
+                    Hunted Scores
+                </button>
+            </div>
+            <div id="huntedscores" class="collapse" data-parent="#leaderboards">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">BlueNovember</div>
+                                <div class="alt-name">GreenNovember</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">Nitrate</div>
+                                <div class="alt-name">Nitrous</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">piper</div>
+                                <div class="alt-name">sandpiper</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">kimbifille</div>
+                                <div class="alt-name">nox</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">pianoblook</div>
+                                <div class="alt-name">dapperblook</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">avanderwalde</div>
+                                <div class="alt-name">aly</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">shosh</div>
+                                <div class="alt-name">shoshing</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">rkass</div>
+                                <div class="alt-name">rkassrated</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">bubbus</div>
+                                <div class="alt-name">pbg</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">linaleee</div>
+                                <div class="alt-name">linaleeeeee</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="player-name">willamin</div>
+                                <div class="alt-name">will</div>
+                            </td>
+                            <td class="score">nan</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+  <!-- Bootstrap JavaScript dependencies -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
