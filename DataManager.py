@@ -164,9 +164,9 @@ class DataManager:
                     }
                     rows.append(row)
     
-        game_data = pd.DataFrame(rows)
-    
-        if not game_data.empty:
+        if len(game_data) > 0:
+            game_data = pd.DataFrame(rows)
+            
             # Just new games
             game_data = game_data[game_data['game_id'] > self.constants['latest_game_id']]
             game_data = game_data[game_data['game_id'] >= self.constants['starting_game_id']]
@@ -179,7 +179,7 @@ class DataManager:
     
             game_data = game_data.sort_values(by=['game_id', 'player_name'])
     
-            return game_data
+        return game_data
     
     # Define functions for development coefficients
     def _calculate_development_coefficient(self, number_of_games, player_rating):
@@ -202,7 +202,7 @@ class DataManager:
     def calculate_ratings(self):
         game_data = self._fetch_game_data()
 
-        if game_data.empty:
+        if len(game_data) == 0:
             print("No games to parse. Exiting...")
             return
         
