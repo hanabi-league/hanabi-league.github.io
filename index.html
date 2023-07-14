@@ -41,6 +41,14 @@
       font-weight: bold;
       color: #17a2b8; /* Bootstrap's 'info' color */
     }
+    .btn-link {
+      color: #007bff;  /* Change the color */
+      text-decoration: none;  /* Remove the underline */
+    }
+    .btn-link:hover {
+      color: #0056b3;  /* Change the color when hovering */
+      text-decoration: none;  /* Keep the underline removed when hovering */
+    }
   </style>
 </head>
 <body>
@@ -91,7 +99,7 @@
         
         <div class="card">
             <div class="card-header">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#playerrating">
+                <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#playerrating">
                     Player Rating
                 </button>
             </div>
@@ -194,7 +202,7 @@
         
         <div class="card">
             <div class="card-header">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#topstreak">
+                <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#topstreak">
                     Top Streak
                 </button>
             </div>
@@ -297,7 +305,7 @@
         
         <div class="card">
             <div class="card-header">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#huntedscores">
+                <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#huntedscores">
                     Hunted Scores
                 </button>
             </div>
