@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container my-5">
+    <!-- Header -->
+    <h1 class="text-center mb-5">Hanabi Leaderboards</h1>
+    <!-- Leader Cards -->
+    <div class="row mb-5">
+        {% for category, leader in leaders.items() %}
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-4">{{ category }}</h5>
+                    <p class="mb-0 player-name">{{ leader.player_name_og }}</p>
+                    <p class="mt-1 alt-name">{{ leader.player_name }}</p>
+                    <p class="score-large">{{ leader.score }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Leaderboards -->
+    <div id="leaderboards" class="accordion">
+        {% for category, leaderboard in leaderboards.items() %}
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#{{ category|lower|replace(' ', '') }}">
+                    {{ category }}
+                </button>
+            </div>
+            <div id="{{ category|lower|replace(' ', '') }}" class="collapse" data-parent="#leaderboards">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        {% for player in leaderboard %}
+                        <tr>
+                            <td>
+                                <div class="player-name">{{ player.player_name_og }}</div>
+                                <div class="alt-name">{{ player.player_name }}</div>
+                            </td>
+                            <td class="score">{{ player.score }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
