@@ -201,6 +201,10 @@ class DataManager:
     # Calculate player/variant ratings
     def calculate_ratings(self):
         game_data = self._fetch_game_data()
+
+        if game_data.empty:
+            print("No games to parse. Exiting...")
+            return
         
         game_ids = game_data['game_id'].unique()
         game_ids.sort()
