@@ -121,7 +121,12 @@ class DataManager:
         def fetch_data(player):
             url = f'https://hanab.live/api/v1/history-full/{player}?start={self.constants["starting_game_id"]}&end={self.constants["ending_game_id"]}'
             response = requests.get(url)
-            return response.json()
+            try:
+                data = response.json()
+            except ValueError:  # includes simplejson.decoder.JSONDecodeError
+                data = []
+            return data
+
     
         players = self.player_data['player_name'].unique()
     
