@@ -49,9 +49,9 @@ titles = {
     'Hunted Scores': 'Most Hunted Scores'
 }
 
-leaders = {cat: {'title': titles[cat], 'leader': leader[0]} for cat, leader in leaderboards.items()}
-
 leaderboards = {cat: get_leaderboard_category(leaderboard, cat, col) for cat, col in categories.items()}
+
+leaders = {cat: {'title': titles[cat], 'leader': leader[0]} for cat, leader in leaderboards.items()}
 
 # leaders = {cat: leader[0] for cat, leader in leaderboards.items()}
 
