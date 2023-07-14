@@ -164,7 +164,7 @@ class DataManager:
                     }
                     rows.append(row)
     
-        if len(game_data) > 0:
+        if len(rows) > 0:
             game_data = pd.DataFrame(rows)
             
             # Just new games
@@ -179,7 +179,9 @@ class DataManager:
     
             game_data = game_data.sort_values(by=['game_id', 'player_name'])
     
-        return game_data
+            return game_data
+
+        return []
     
     # Define functions for development coefficients
     def _calculate_development_coefficient(self, number_of_games, player_rating):
