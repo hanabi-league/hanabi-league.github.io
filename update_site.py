@@ -41,7 +41,11 @@ leaderboards = {cat: get_leaderboard_category(leaderboard, cat, col) for cat, co
 
 leaders = {cat: leader[0] for cat, leader in leaderboards.items()}
 
+# Set up Jinja
+env = Environment(loader=FileSystemLoader('templates'))
 
+# Render the template
+template = env.get_template('content.html')
 
 # Pass the leaders and leaderboards dictionaries into the template
 rendered_html = template.render(leaders=leaders, leaderboards=leaderboards)
