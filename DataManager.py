@@ -141,7 +141,7 @@ class DataManager:
                 end = parse(game["datetimeFinished"])
                 length = (end - start).total_seconds() / 60
 
-                datetime_started = parse(start).astimezone(pytz.timezone('US/Eastern'))
+                datetime_started = start.astimezone(pytz.timezone('US/Eastern'))
     
                 if (
                     not game["options"]["deckPlays"]
