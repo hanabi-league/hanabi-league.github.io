@@ -17,7 +17,9 @@ def build_leaderboard(player_data, player_game_data):
                 'player_name_og',
                 'player_rating', 
                 'top_streak', 
-                'hunted_scores'
+                'hunted_scores',
+                'number_of_games',
+                'number_of_max_scores'
             ]]
     )
     leaderboard['player_rating'] = leaderboard['player_rating'].astype(int)
@@ -25,11 +27,11 @@ def build_leaderboard(player_data, player_game_data):
     
     def get_leaderboard_category(data, category, score_col):
         if category == 'Player Rating':
-            tie_breakers = ['top_streak', 'hunted_scores']
+            tie_breakers = ['top_streak', 'hunted_scores', 'number_of_games', 'number_of_max_scores']
         elif category == 'Top Streak':
-            tie_breakers = ['player_rating', 'hunted_scores']
+            tie_breakers = ['player_rating', 'hunted_scores', 'number_of_games', 'number_of_max_scores']
         else: # 'Hunted Scores'
-            tie_breakers = ['player_rating', 'top_streak']
+            tie_breakers = ['player_rating', 'top_streak', 'number_of_games', 'number_of_max_scores']
         leaderboard = data.sort_values([score_col] + tie_breakers, ascending=[False]*len([score_col] + tie_breakers))
         # leaderboard = leaderboard.sample(frac=1)  # Ensure randomness for final tie-breaker
         return leaderboard[['player_name_og', 'player_name', score_col]].rename(columns={score_col: 'score'}).to_dict('records')
