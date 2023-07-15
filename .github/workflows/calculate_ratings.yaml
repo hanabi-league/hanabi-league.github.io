@@ -11,6 +11,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: Pull latest changes
+      run: |
+        git config --global user.name 'hanabi-league'
+        git config --global user.email '139185531+hanabi-league@users.noreply.github.com'
+        git pull origin main
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -27,8 +32,5 @@ jobs:
       run: python update_site.py
     - name: Commit and push if changed
       run: |
-        git config --global user.name 'hanabi-league'
-        git config --global user.email '139185531+hanabi-league@users.noreply.github.com'
-        git pull origin main
         git add -A
         git diff --quiet && git diff --staged --quiet || (echo 'Committing changes...' && git commit -m 'Update data' && git push https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git HEAD:main)
