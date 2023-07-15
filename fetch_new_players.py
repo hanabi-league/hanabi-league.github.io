@@ -34,6 +34,9 @@ new_players = new_players.rename(columns={
 # Drop the column you're not interested in
 new_players = new_players.drop(columns=["discord_tag"])
 
+with open('data/constants.json', 'r') as file:
+    constants = json.load(file)
+    
 # Load existing data
 player_data = pd.read_csv('data/player_data.csv')
 
@@ -43,7 +46,7 @@ for index, row in new_players.iterrows():
         new_row = pd.DataFrame({
             'player_name': [row['player_name']], 
             'player_name_og': [row['player_name_og']], 
-            'player_rating': [1400], 
+            'player_rating': [constants['player_base_rating']], 
             'top_streak': [0], 
             'current_streak': [0], 
             'number_of_games': [0], 
