@@ -21,6 +21,7 @@
     "difficulty_modifier_5p": 0.1,
     "starting_game_id": 700000,
     "ending_game_id": 1000000,
+    "starting_time": "2023-07-15 06:00:00 EST"
     "latest_game_id": 952928,
     "total_games_played": 212,
     "latest_run": "2023-07-11 22:44:10"
