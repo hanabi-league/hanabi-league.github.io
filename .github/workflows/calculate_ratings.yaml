@@ -1,7 +1,7 @@
 name: Calculate ratings
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
   schedule:
     - cron: '*/15 * * * *'
 
