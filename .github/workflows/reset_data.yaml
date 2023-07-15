@@ -1,4 +1,4 @@
-name: Calculate ratings
+name: Reset data
 
 on:
   workflow_dispatch
