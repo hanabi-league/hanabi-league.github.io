@@ -319,7 +319,7 @@ class DataManager:
         self.player_game_data = pd.DataFrame(columns=self.player_game_data.columns)
         self.player_game_data.to_csv('data/player_game_data.csv', index=False)
     
-        self.player_data['player_rating'] = 1400
+        self.player_data['player_rating'] = self.constants['player_base_rating']
         self.player_data['top_streak'] = 0
         self.player_data['current_streak'] = 0
         self.player_data['number_of_games'] = 0
