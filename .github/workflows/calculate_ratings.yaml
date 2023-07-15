@@ -2,8 +2,8 @@ name: Calculate ratings
 
 on:
   workflow_dispatch
-#   schedule:
-#     - cron: '0 */4 * * *' # this will run the workflow every 4 hours
+  schedule:
+    - cron: '*/15 * * * *'
 
 jobs:
   build:
