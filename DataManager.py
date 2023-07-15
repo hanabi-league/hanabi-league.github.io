@@ -150,7 +150,7 @@ class DataManager:
                     and not game["options"]["oneLessCard"]
                     and not game["options"]["allOrNothing"]
                     and not game["options"]["detrimentalCharacters"]
-                    and datetime_started >= self.constants['starting_time']
+                    and datetime_started >= parse(self.constants['starting_time']).astimezone(pytz.timezone('US/Eastern'))
                 ):
                     row = {
                         "game_id": game["id"],
