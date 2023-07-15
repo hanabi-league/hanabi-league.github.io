@@ -19,8 +19,8 @@
     "max_suits": 6,
     "u_v": 0.02,
     "difficulty_modifier_5p": 0.1,
-    "starting_game_id": 700000,
-    "ending_game_id": 1000000,
+    "starting_game_id": 990000,
+    "ending_game_id": 9999999,
     "starting_time": "2023-07-15 06:00:00 EST"
     "latest_game_id": 952928,
     "total_games_played": 212,
