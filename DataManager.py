@@ -2,6 +2,7 @@ import requests
 import json
 
 from dateutil.parser import parse
+import pytz
 
 import pandas as pd
 import numpy as np
@@ -139,6 +140,8 @@ class DataManager:
                 start = parse(game["datetimeStarted"])
                 end = parse(game["datetimeFinished"])
                 length = (end - start).total_seconds() / 60
+
+                datetime_started = parse(start).astimezone(pytz.timezone('US/Eastern'))
     
                 if (
                     not game["options"]["deckPlays"]
@@ -147,6 +150,7 @@ class DataManager:
                     and not game["options"]["oneLessCard"]
                     and not game["options"]["allOrNothing"]
                     and not game["options"]["detrimentalCharacters"]
+                    and datetime_started >= self.constants['starting_time']
                 ):
                     row = {
                         "game_id": game["id"],
