@@ -49,6 +49,8 @@ def build_leaderboard(player_data, player_game_data):
     
     leaders = {cat: {'title': titles[cat], 'leader': leader[0]} for cat, leader in leaderboards.items()}
 
+    return leaderboards, leaders
+
 def main():
     player_data = pd.read_csv('data/player_data.csv')
     player_game_data = pd.read_csv('data/player_game_data.csv')
@@ -57,7 +59,7 @@ def main():
 
     player_data = player_data[player_data['number_of_games'] > 0]
 
-    build_leaderboard(player_data, player_game_data)
+    leaderboards, leaders = build_leaderboard(player_data, player_game_data)
     
     # Jinja things
     env = Environment(loader=FileSystemLoader('templates'))
