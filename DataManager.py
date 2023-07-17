@@ -169,6 +169,7 @@ class DataManager:
                     rows.append(row)
     
         if len(rows) > 0:
+            print(rows)
             game_data = pd.DataFrame(rows)
             
             # Just new games
