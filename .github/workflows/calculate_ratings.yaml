@@ -26,6 +26,8 @@ jobs:
         pip install -r requirements.txt
     - name: Fetch new players
       run: python fetch_new_players.py
+      env:
+        google_auth_token: ${{ secrets.GOOGLE_AUTH_TOKEN }}
     - name: Calculate ratings
       run: python calculate_ratings.py
     - name: Update site
