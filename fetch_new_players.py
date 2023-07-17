@@ -9,14 +9,10 @@ import pandas as pd
 # Define the scope
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
-# Try grabbing new auth token
+# Grab auth token from env secret
 token_b64 = os.environ.get('google_auth_token')
 token_json = json.loads(base64.b64decode(token_b64))
-creds_new = ServiceAccountCredentials.from_json_keyfile_dict(token_json, scope)
-print(creds_new)
-
-# Add your service account file
-creds = ServiceAccountCredentials.from_json_keyfile_name('config/service_account_keyfile.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(token_json, scope)
 
 # Authorize the clientsheet 
 client = gspread.authorize(creds)
