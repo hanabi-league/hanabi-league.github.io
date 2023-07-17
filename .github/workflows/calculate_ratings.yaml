@@ -27,7 +27,7 @@ jobs:
     - name: Fetch new players
       run: python fetch_new_players.py
       env:
-        google_auth_token: ${{ secrets.GOOGLE_AUTH_TOKEN }}
+        google_auth_token: ${{ secrets.SERVICE_ACCOUNT_B64 }}
     - name: Calculate ratings
       run: python calculate_ratings.py
     - name: Update site
