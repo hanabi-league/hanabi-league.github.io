@@ -175,7 +175,8 @@ class DataManager:
             # Just new games
             latest_game_id = self.player_game_data['game_id'].max()
             print(latest_game_id)
-            game_data = game_data[game_data['game_id'] > latest_game_id]
+            if latest_game_id:
+                game_data = game_data[game_data['game_id'] > latest_game_id]
             print(1, len(game_data))
             game_data = game_data[game_data['game_id'] >= self.constants['starting_game_id']]
             print(2, len(game_data))
