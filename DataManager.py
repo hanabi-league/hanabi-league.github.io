@@ -169,9 +169,6 @@ class DataManager:
                     rows.append(row)
     
         if len(rows) > 0:
-            print()
-            print(rows)
-            print()
             game_data = pd.DataFrame(rows)
             
             # Just new games
@@ -181,7 +178,8 @@ class DataManager:
         
             game_data = game_data[game_data['number_of_players'].between(self.constants['min_player_count'], self.constants['max_player_count'])]
             game_data = game_data[game_data['player_names'].apply(lambda x: set(x).issubset(players))]
-    
+
+            print(game_data.to_csv())
             game_data = pd.merge(game_data, self.variants, on='variant_name')
     
             game_data = game_data.sort_values(by=['game_id', 'player_name'])
