@@ -1,7 +1,12 @@
+import json
+import os
+
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
-import json
+
+# Try grabbing auth token
+print(os.environ.get('google_auth_token'))
 
 # Define the scope
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
