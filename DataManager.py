@@ -174,13 +174,18 @@ class DataManager:
             
             # Just new games
             latest_game_id = self.player_game_data['game_id'].max()
+            print(latest_game_id)
             game_data = game_data[game_data['game_id'] > latest_game_id]
+            print(1, len(game_data))
             game_data = game_data[game_data['game_id'] >= self.constants['starting_game_id']]
+            print(2, len(game_data))
             game_data = game_data[game_data['game_id'] <= self.constants['ending_game_id']]
+            print(3, len(game_data))
         
             game_data = game_data[game_data['number_of_players'].between(self.constants['min_player_count'], self.constants['max_player_count'])]
             game_data = game_data[game_data['player_names'].apply(lambda x: set(x).issubset(players))]
 
+            print('lookit!')
             print(game_data.to_csv())
             game_data = pd.merge(game_data, self.variants, on='variant_name')
     
