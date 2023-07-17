@@ -10,7 +10,7 @@ import pandas as pd
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
 # Try grabbing new auth token
-token_b64 = os.environ.get('SERVICE_ACCOUNT_B64')
+token_b64 = os.environ.get('google_auth_token')
 token_json = json.loads(base64.b64decode(token_b64))
 creds_new = ServiceAccountCredentials.from_json_keyfile_dict(token_json, scope)
 print(creds_new)
