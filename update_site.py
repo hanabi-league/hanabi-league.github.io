@@ -24,8 +24,8 @@ def build_leaderboard(player_data, player_game_data):
     )
     leaderboard['player_rating'] = leaderboard['player_rating'].astype(int)
     leaderboard['top_streak'] = leaderboard['top_streak'].astype(int)
-    leaderboard['hunted_scores'] = leaderboard['hunted_scores'].astype(int)
     leaderboard['hunted_scores'] = leaderboard['hunted_scores'].fillna(0)
+    leaderboard['hunted_scores'] = leaderboard['hunted_scores'].astype(int)
     leaderboard = leaderboard.sort_values('player_rating', ascending=False)
     
     def get_leaderboard_category(data, category, score_col):
