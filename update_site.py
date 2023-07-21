@@ -59,17 +59,20 @@ def build_leaderboard(player_data, player_game_data):
 def main():
     player_data = pd.read_csv('data/player_data.csv')
     player_game_data = pd.read_csv('data/player_game_data.csv')
+    variant_data = pd.read_csv('data/variant_data.csv')
     if len(player_game_data) == 0:
         return
 
     player_data = player_data[player_data['number_of_games'] > 0]
+    variant_data = variant_data[variant_data['number_of_games_variant'] > 0]
 
     leaderboards, leaders = build_leaderboard(player_data, player_game_data)
+    variants = variant_data.to_dict('records')
     
     # Jinja things
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('content.html')
-    rendered_html = template.render(leaders=leaders, leaderboards=leaderboards)
+    rendered_html = template.render(leaders=leaders, leaderboards=leaderboards, variants=variants)
     with open('index.html', 'w') as f:
         f.write(rendered_html)
 
