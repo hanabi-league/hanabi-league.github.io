@@ -51,7 +51,20 @@
 </div>
 
 <div class="tab-pane fade" id="variant" role="tabpanel">
-    <!-- Variant content goes here... -->
+    <div class="card-deck">
+        {% for variant in variants %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ variant.variant_name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Rating: {{ variant.variant_rating|int }}</h6>
+                <p class="card-text">{{ variant.number_of_games_variant }} games played</p>
+                <p class="card-text">{{ variant.number_of_max_scores_variant }} max scores</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 </div>
 
 <div class="tab-pane fade" id="info" role="tabpanel">
