@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Pull latest changes
+      run: |
+        git config --global user.name 'hanabi-league'
+        git config --global user.email '139185531+hanabi-league@users.noreply.github.com'
+        git pull origin tabs
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Update site
+      run: python update_site.py
+    - name: Commit and push if changed
+      run: |
+        git add -A
+        git diff --quiet && git diff --staged --quiet || (echo 'Committing changes...' && git commit -m 'Update data' && git push https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git HEAD:tabs)
