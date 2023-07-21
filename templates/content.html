@@ -1,50 +1,100 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="container my-5">
-    <!-- Header -->
-    <h1 class="text-center mb-5">Hanabi Leaderboards</h1>
-    <!-- Leader Cards -->
-    <div class="row mb-5">
-        {% for category, data in leaders.items() %}
-        <div class="col-sm-4">
+<div class="tab-pane fade show active" id="leaderboards" role="tabpanel">
+    <div class="container my-5">
+        <!-- Header -->
+<!--         <h1 class="text-center mb-5">Hanabi Leaderboards</h1> -->
+        <!-- Leader Cards -->
+        <div class="row mb-5">
+            {% for category, data in leaders.items() %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-4">{{ data.title }}</h5>
+                        <p class="mb-0 player-name">{{ data.leader.player_name_og }}</p>
+                        <p class="mt-1 alt-name">{{ data.leader.player_name }}</p>
+                        <p class="score-large">{{ data.leader.score }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Leaderboards -->
+        <div id="leaderboards" class="accordion">
+            {% for category, leaderboard in leaderboards.items() %}
             <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title mb-4">{{ data.title }}</h5>
-                    <p class="mb-0 player-name">{{ data.leader.player_name_og }}</p>
-                    <p class="mt-1 alt-name">{{ data.leader.player_name }}</p>
-                    <p class="score-large">{{ data.leader.score }}</p>
+                <div class="card-header">
+                    <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#{{ category|lower|replace(' ', '') }}">
+                        {{ category }}
+                    </button>
+                </div>
+                <div id="{{ category|lower|replace(' ', '') }}" class="collapse" data-parent="#leaderboards">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            {% for player in leaderboard %}
+                            <tr>
+                                <td>
+                                    <div class="player-name">{{ player.player_name_og }}</div>
+                                    <div class="alt-name">{{ player.player_name }}</div>
+                                </td>
+                                <td class="score">{{ player.score }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
+</div>
 
-    <!-- Leaderboards -->
-    <div id="leaderboards" class="accordion">
-        {% for category, leaderboard in leaderboards.items() %}
-        <div class="card">
-            <div class="card-header">
-                <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#{{ category|lower|replace(' ', '') }}">
-                    {{ category }}
-                </button>
-            </div>
-            <div id="{{ category|lower|replace(' ', '') }}" class="collapse" data-parent="#leaderboards">
-                <div class="card-body">
-                    <table class="table table-striped">
-                        {% for player in leaderboard %}
-                        <tr>
-                            <td>
-                                <div class="player-name">{{ player.player_name_og }}</div>
-                                <div class="alt-name">{{ player.player_name }}</div>
-                            </td>
-                            <td class="score">{{ player.score }}</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+<div class="tab-pane fade" id="variant" role="tabpanel">
+    <!-- Variant content goes here... -->
+</div>
+
+<div class="tab-pane fade" id="info" role="tabpanel">
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">Welcome to the league!</h4>
+      <p>The Test Season will be live from <strong>July 15th - August 31st!</strong></p>
+      <hr>
+      <p class="mb-0">Sign ups are now open <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDDW0Iz4pNHaQjqBpCuRsARJ1PE1kO85ndrvKte3irjCJhvw/viewform" class="alert-link">HERE</a>!</p>
     </div>
+    <h3>About</h3>
+    <p>The Hanabi Pro Hunting League creates a new way for folks to play more "serious" Hanabi, but without the stress, formality, and scheduling headaches of normal tournaments. For folks of all skill levels, the most important goal is simply to compete against yourself and to constantly learn and improve!</p>
+    
+    <h3>How to Play</h3>
+    <p>Everyone is welcome to participate! To sign up, just click the link above to fill out the short Google Form. Just remember the following important info:</p>
+    <ul>
+      <li>Everyone joins <strong>individually</strong>, and can play with any mix of other participants.</li>
+      <li>League games must be played with a <strong>registered alt account</strong>.</li>
+      <li>ALL games played from this new account will be tracked each Season, so don’t forget to switch back when playing non-League games!</li>
+    </ul>
+    <p>All game data will be automatically tracked & recorded, so all you need to do is play! Make sure to check out this page for important game & League info.</p>
+    
+    <h3>Game Rules</h3>
+    <ul>
+      <li><strong>3-5 player games</strong> only</li>
+      <li><strong>5-6 suit games</strong> only, and only of the following variants (110 total!):
+        <ul>
+          <li>No Variant, the 9 non-dark ‘special suits’, and all combinations</li>
+          <li>All Clue Starved combinations</li>
+        </ul>
+      </li>
+      <li>Time or Untimed, but no alternate game modes or special rules (Bottom-Deck Blindplays, Empty Clues, Detrimental Chars, etc.)</li>
+    </ul>
+    <p>Only games with which follow these game rules and which include exclusively registered players will be tracked!</p>
+    
+    <h3>Introducing the Hanabi League Rating system!</h3>
+    <p>We’re excited to announce the new, experimental <strong>Hanabi League Rating</strong> (HLR) system! Adapted from Elo systems, the HLR basically works by estimating the expected outcome of each game. Each player will then gain or lose rating points based on how (un)likely the result was calculated to be.</p>
+    
+    <p>These estimates are based on the teammates’ ratings, versus the chosen variant’s estimated difficulty (variants have ratings too!) By design,</p>
+    <ul>
+      <li>The system counts <strong>Max Scores</strong> as <em>Wins</em>; any other result is simply a <em>Loss</em>.</li>
+      <li>For the veteran glory-seekers, there will also be <strong>Leaderboards</strong> tracking a few popular stats. For now, these include <em><strong>Rating</strong></em>, <em><strong>Longest Win Streak</strong></em>, and <em><strong>Scores Hunted</strong></em>.</li>
+      <li>A few other fun stats will be tracked as well, just for curiosity’s sake.</li>
+      <li>All the player ratings, leaderboards, and variant stats will be tracked & updated automatically on this website.</li>
+    </ul>
 </div>
 {% endblock %}
