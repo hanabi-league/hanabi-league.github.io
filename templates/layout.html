@@ -3,59 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Leaderboards</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <style>
-    .player-name {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-    .alt-name {
-      font-size: 0.75rem;
-      color: #777;
-    }
-    .score {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #17a2b8; /* This color is a Bootstrap color, teal */
-    }
-    /* Make content vertically centered */
-    .table td, .table th {
-      vertical-align: middle;
-    }
-    .card-header {
-      background-color: #f8f9fa;
-    }
-    .card-title {
-      color: #343a40; /* Bootstrap's dark color */
-      font-size: 2.0rem;
-      font-weight: bold;
-    }
-    .alt-name {
-      font-size: 0.75rem;
-      color: #777;
-      margin-top: 0.25rem; /* reduce spacing above alt-name */
-    }
-    .score-large {
-      font-size: 2rem; /* you can adjust this value */
-      font-weight: bold;
-      color: #17a2b8; /* Bootstrap's 'info' color */
-    }
-    .btn-link {
-      color: #007bff;  /* Change the color */
-      text-decoration: none;  /* Remove the underline */
-    }
-    .btn-link:hover {
-      color: #0056b3;  /* Change the color when hovering */
-      text-decoration: none;  /* Keep the underline removed when hovering */
-    }
-  </style>
+  <title>Hanabi Pro Hunting League</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/leaderboards.css">
 </head>
 <body>
-  {% block content %}{% endblock %}
-  <!-- Bootstrap JavaScript dependencies -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">The Hanabi Pro Hunting League<small class="text-muted"> - Test Season Zero</small></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" id="leaderboards-tab" data-toggle="tab" href="#leaderboards">Leaderboards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="variant-tab" data-toggle="tab" href="#variants">Variants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="info-tab" data-toggle="tab" href="#info">Info</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container text-center">
+          <span class="text-muted">{{ total_games_played }} games | {{ total_players }} players | Thanks for playing <3</span><br>
+          <span class="text-muted">Last updated: <span id="latestRun">{{ latest_run }}</span></span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+
+    <script>
+      $(document).ready(function() {
+          $('.nav-link').on('shown.bs.tab', function(e) {
+              // Remove 'active' class from all nav-items
+              $('.nav-link').removeClass('active');
+
+              // Add 'active' class to the current nav-item
+              $(this).addClass('active');
+          });
+      });
+    </script>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          // Get the latest run date in UTC
+          var latestRunUtc = new Date(document.getElementById("latestRun").textContent);
+
+          // Convert it to the local timezone and format it
+          var latestRunLocal = latestRunUtc.toLocaleString("en-US", { month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" });
+
+          // Set the text content of the latestRun span to the local date
+          document.getElementById("latestRun").textContent = latestRunLocal;
+      });
+    </script>
+
 </body>
 </html>
