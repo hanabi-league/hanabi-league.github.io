@@ -3,919 +3,1158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Leaderboards</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <style>
-    .player-name {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-    .alt-name {
-      font-size: 0.75rem;
-      color: #777;
-    }
-    .score {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #17a2b8; /* This color is a Bootstrap color, teal */
-    }
-    /* Make content vertically centered */
-    .table td, .table th {
-      vertical-align: middle;
-    }
-    .card-header {
-      background-color: #f8f9fa;
-    }
-    .card-title {
-      color: #343a40; /* Bootstrap's dark color */
-      font-size: 2.0rem;
-      font-weight: bold;
-    }
-    .alt-name {
-      font-size: 0.75rem;
-      color: #777;
-      margin-top: 0.25rem; /* reduce spacing above alt-name */
-    }
-    .score-large {
-      font-size: 2rem; /* you can adjust this value */
-      font-weight: bold;
-      color: #17a2b8; /* Bootstrap's 'info' color */
-    }
-    .btn-link {
-      color: #007bff;  /* Change the color */
-      text-decoration: none;  /* Remove the underline */
-    }
-    .btn-link:hover {
-      color: #0056b3;  /* Change the color when hovering */
-      text-decoration: none;  /* Keep the underline removed when hovering */
-    }
-  </style>
+  <title>Hanabi Pro Hunting League</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/leaderboards.css">
 </head>
 <body>
-  
-<div class="container my-5">
-    <!-- Header -->
-    <h1 class="text-center mb-5">Hanabi Leaderboards</h1>
-    <!-- Leader Cards -->
-    <div class="row mb-5">
-        
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title mb-4">Highest Rating</h5>
-                    <p class="mb-0 player-name">Markus</p>
-                    <p class="mt-1 alt-name">MarkusKarlsen</p>
-                    <p class="score-large">1711</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">The Hanabi Pro Hunting League<small class="text-muted"> - Test Season Zero</small></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" id="leaderboards-tab" data-toggle="tab" href="#leaderboards">Leaderboards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="variant-tab" data-toggle="tab" href="#variants">Variants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="info-tab" data-toggle="tab" href="#info">Info</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="leaderboards">
+        <div class="container my-5">
+            <!-- Header -->
+    <!--         <h1 class="text-center mb-5">Hanabi Leaderboards</h1> -->
+            <!-- Leader Cards -->
+            <div class="card-deck mb-5">
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Highest Rating</h5>
+                        <p class="mb-0 player-name">Ramanujan</p>
+                        <p class="mt-1 alt-name">Ramanujan</p>
+                        <p class="score-large">1687</p>
+                    </div>
                 </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Longest Win Streak</h5>
+                        <p class="mb-0 player-name">Ramanujan</p>
+                        <p class="mt-1 alt-name">Ramanujan</p>
+                        <p class="score-large">20</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Most Hunted Scores</h5>
+                        <p class="mb-0 player-name">newduke</p>
+                        <p class="mt-1 alt-name">newdukeL</p>
+                        <p class="score-large">44</p>
+                    </div>
+                </div>
+                
+            </div>
+
+
+        
+            <!-- Leaderboards -->
+            <div id="leaderboards" class="accordion">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#playerrating">
+                            Player Rating
+                        </button>
+                    </div>
+                    <div id="playerrating" class="collapse" data-parent="#leaderboards">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Ramanujan</div>
+                                        <div class="alt-name">Ramanujan</div>
+                                    </td>
+                                    <td class="score">1687</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Markus</div>
+                                        <div class="alt-name">MarkusKarlsen</div>
+                                    </td>
+                                    <td class="score">1673</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">spring</div>
+                                        <div class="alt-name">PHLspring</div>
+                                    </td>
+                                    <td class="score">1647</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Sturm</div>
+                                        <div class="alt-name">Draku</div>
+                                    </td>
+                                    <td class="score">1632</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">str8tsknacker</div>
+                                        <div class="alt-name">str8forward</div>
+                                    </td>
+                                    <td class="score">1614</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">newduke</div>
+                                        <div class="alt-name">newdukeL</div>
+                                    </td>
+                                    <td class="score">1604</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Neema</div>
+                                        <div class="alt-name">Neempasta</div>
+                                    </td>
+                                    <td class="score">1552</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">HelanaAshryvr</div>
+                                        <div class="alt-name">LeagueLana</div>
+                                    </td>
+                                    <td class="score">1478</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">TimeHoodie</div>
+                                        <div class="alt-name">TwinHoodie</div>
+                                    </td>
+                                    <td class="score">1434</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">kimbifille</div>
+                                        <div class="alt-name">nox</div>
+                                    </td>
+                                    <td class="score">1343</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">micerang</div>
+                                        <div class="alt-name">miceranked</div>
+                                    </td>
+                                    <td class="score">1320</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Coco</div>
+                                        <div class="alt-name">LeCoco</div>
+                                    </td>
+                                    <td class="score">1313</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">IAMJEFF</div>
+                                        <div class="alt-name">shinymew</div>
+                                    </td>
+                                    <td class="score">1292</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">posij118</div>
+                                        <div class="alt-name">posij119</div>
+                                    </td>
+                                    <td class="score">1291</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">rkass</div>
+                                        <div class="alt-name">rkassrated</div>
+                                    </td>
+                                    <td class="score">1272</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">avanderwalde</div>
+                                        <div class="alt-name">avan</div>
+                                    </td>
+                                    <td class="score">1272</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">eliclax</div>
+                                        <div class="alt-name">eliclax_PHL</div>
+                                    </td>
+                                    <td class="score">1240</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Yagami Black</div>
+                                        <div class="alt-name">obiwan_kenobi</div>
+                                    </td>
+                                    <td class="score">1238</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">StKildaFan</div>
+                                        <div class="alt-name">KildaScoreHunt</div>
+                                    </td>
+                                    <td class="score">1230</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">sin_faith</div>
+                                        <div class="alt-name">sin_harmonic</div>
+                                    </td>
+                                    <td class="score">1230</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">WillFlame</div>
+                                        <div class="alt-name">FlameWill</div>
+                                    </td>
+                                    <td class="score">1221</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Kyle</div>
+                                        <div class="alt-name">Incogneato</div>
+                                    </td>
+                                    <td class="score">1220</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">omegaxis</div>
+                                        <div class="alt-name">Cinnamoroll</div>
+                                    </td>
+                                    <td class="score">1216</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">indego</div>
+                                        <div class="alt-name">LeagueIndego</div>
+                                    </td>
+                                    <td class="score">1206</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">downvoid</div>
+                                        <div class="alt-name">leftvoid</div>
+                                    </td>
+                                    <td class="score">1197</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Elena</div>
+                                        <div class="alt-name">TugaGirl</div>
+                                    </td>
+                                    <td class="score">1193</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Roeantste</div>
+                                        <div class="alt-name">Roeleague</div>
+                                    </td>
+                                    <td class="score">1190</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">pianoblook</div>
+                                        <div class="alt-name">dapperblook</div>
+                                    </td>
+                                    <td class="score">1189</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">joel</div>
+                                        <div class="alt-name">Ljoelw</div>
+                                    </td>
+                                    <td class="score">1180</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">aitch2</div>
+                                        <div class="alt-name">h2-league</div>
+                                    </td>
+                                    <td class="score">1163</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">RIMBarisax</div>
+                                        <div class="alt-name">masteradept</div>
+                                    </td>
+                                    <td class="score">1152</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">wateroffire</div>
+                                        <div class="alt-name">hinomizu</div>
+                                    </td>
+                                    <td class="score">1152</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">beyoken</div>
+                                        <div class="alt-name">vermling</div>
+                                    </td>
+                                    <td class="score">1152</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Purple joe</div>
+                                        <div class="alt-name">purplejoeAlt</div>
+                                    </td>
+                                    <td class="score">1142</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">purple joe</div>
+                                        <div class="alt-name">purplejoealt</div>
+                                    </td>
+                                    <td class="score">1142</td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#topstreak">
+                            Top Streak
+                        </button>
+                    </div>
+                    <div id="topstreak" class="collapse" data-parent="#leaderboards">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Ramanujan</div>
+                                        <div class="alt-name">Ramanujan</div>
+                                    </td>
+                                    <td class="score">20</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">spring</div>
+                                        <div class="alt-name">PHLspring</div>
+                                    </td>
+                                    <td class="score">14</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Neema</div>
+                                        <div class="alt-name">Neempasta</div>
+                                    </td>
+                                    <td class="score">13</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">HelanaAshryvr</div>
+                                        <div class="alt-name">LeagueLana</div>
+                                    </td>
+                                    <td class="score">11</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Markus</div>
+                                        <div class="alt-name">MarkusKarlsen</div>
+                                    </td>
+                                    <td class="score">8</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Sturm</div>
+                                        <div class="alt-name">Draku</div>
+                                    </td>
+                                    <td class="score">8</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">str8tsknacker</div>
+                                        <div class="alt-name">str8forward</div>
+                                    </td>
+                                    <td class="score">8</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">newduke</div>
+                                        <div class="alt-name">newdukeL</div>
+                                    </td>
+                                    <td class="score">7</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">TimeHoodie</div>
+                                        <div class="alt-name">TwinHoodie</div>
+                                    </td>
+                                    <td class="score">7</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">micerang</div>
+                                        <div class="alt-name">miceranked</div>
+                                    </td>
+                                    <td class="score">7</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">posij118</div>
+                                        <div class="alt-name">posij119</div>
+                                    </td>
+                                    <td class="score">7</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">StKildaFan</div>
+                                        <div class="alt-name">KildaScoreHunt</div>
+                                    </td>
+                                    <td class="score">6</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">kimbifille</div>
+                                        <div class="alt-name">nox</div>
+                                    </td>
+                                    <td class="score">5</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Coco</div>
+                                        <div class="alt-name">LeCoco</div>
+                                    </td>
+                                    <td class="score">4</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">IAMJEFF</div>
+                                        <div class="alt-name">shinymew</div>
+                                    </td>
+                                    <td class="score">4</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Yagami Black</div>
+                                        <div class="alt-name">obiwan_kenobi</div>
+                                    </td>
+                                    <td class="score">4</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">eliclax</div>
+                                        <div class="alt-name">eliclax_PHL</div>
+                                    </td>
+                                    <td class="score">3</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">sin_faith</div>
+                                        <div class="alt-name">sin_harmonic</div>
+                                    </td>
+                                    <td class="score">3</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">downvoid</div>
+                                        <div class="alt-name">leftvoid</div>
+                                    </td>
+                                    <td class="score">3</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">rkass</div>
+                                        <div class="alt-name">rkassrated</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">avanderwalde</div>
+                                        <div class="alt-name">avan</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">WillFlame</div>
+                                        <div class="alt-name">FlameWill</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Kyle</div>
+                                        <div class="alt-name">Incogneato</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Roeantste</div>
+                                        <div class="alt-name">Roeleague</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">pianoblook</div>
+                                        <div class="alt-name">dapperblook</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">RIMBarisax</div>
+                                        <div class="alt-name">masteradept</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">wateroffire</div>
+                                        <div class="alt-name">hinomizu</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">beyoken</div>
+                                        <div class="alt-name">vermling</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Purple joe</div>
+                                        <div class="alt-name">purplejoeAlt</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">purple joe</div>
+                                        <div class="alt-name">purplejoealt</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">omegaxis</div>
+                                        <div class="alt-name">Cinnamoroll</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">indego</div>
+                                        <div class="alt-name">LeagueIndego</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Elena</div>
+                                        <div class="alt-name">TugaGirl</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">joel</div>
+                                        <div class="alt-name">Ljoelw</div>
+                                    </td>
+                                    <td class="score">0</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">aitch2</div>
+                                        <div class="alt-name">h2-league</div>
+                                    </td>
+                                    <td class="score">0</td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#huntedscores">
+                            Hunted Scores
+                        </button>
+                    </div>
+                    <div id="huntedscores" class="collapse" data-parent="#leaderboards">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">newduke</div>
+                                        <div class="alt-name">newdukeL</div>
+                                    </td>
+                                    <td class="score">44</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">spring</div>
+                                        <div class="alt-name">PHLspring</div>
+                                    </td>
+                                    <td class="score">39</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Ramanujan</div>
+                                        <div class="alt-name">Ramanujan</div>
+                                    </td>
+                                    <td class="score">37</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Sturm</div>
+                                        <div class="alt-name">Draku</div>
+                                    </td>
+                                    <td class="score">32</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">str8tsknacker</div>
+                                        <div class="alt-name">str8forward</div>
+                                    </td>
+                                    <td class="score">22</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Markus</div>
+                                        <div class="alt-name">MarkusKarlsen</div>
+                                    </td>
+                                    <td class="score">18</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Neema</div>
+                                        <div class="alt-name">Neempasta</div>
+                                    </td>
+                                    <td class="score">18</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">downvoid</div>
+                                        <div class="alt-name">leftvoid</div>
+                                    </td>
+                                    <td class="score">16</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">HelanaAshryvr</div>
+                                        <div class="alt-name">LeagueLana</div>
+                                    </td>
+                                    <td class="score">13</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Yagami Black</div>
+                                        <div class="alt-name">obiwan_kenobi</div>
+                                    </td>
+                                    <td class="score">12</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">TimeHoodie</div>
+                                        <div class="alt-name">TwinHoodie</div>
+                                    </td>
+                                    <td class="score">11</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">micerang</div>
+                                        <div class="alt-name">miceranked</div>
+                                    </td>
+                                    <td class="score">11</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Coco</div>
+                                        <div class="alt-name">LeCoco</div>
+                                    </td>
+                                    <td class="score">9</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">StKildaFan</div>
+                                        <div class="alt-name">KildaScoreHunt</div>
+                                    </td>
+                                    <td class="score">9</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">kimbifille</div>
+                                        <div class="alt-name">nox</div>
+                                    </td>
+                                    <td class="score">6</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">posij118</div>
+                                        <div class="alt-name">posij119</div>
+                                    </td>
+                                    <td class="score">6</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Roeantste</div>
+                                        <div class="alt-name">Roeleague</div>
+                                    </td>
+                                    <td class="score">5</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">IAMJEFF</div>
+                                        <div class="alt-name">shinymew</div>
+                                    </td>
+                                    <td class="score">4</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">eliclax</div>
+                                        <div class="alt-name">eliclax_PHL</div>
+                                    </td>
+                                    <td class="score">4</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">sin_faith</div>
+                                        <div class="alt-name">sin_harmonic</div>
+                                    </td>
+                                    <td class="score">3</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Kyle</div>
+                                        <div class="alt-name">Incogneato</div>
+                                    </td>
+                                    <td class="score">3</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">WillFlame</div>
+                                        <div class="alt-name">FlameWill</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Elena</div>
+                                        <div class="alt-name">TugaGirl</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">Purple joe</div>
+                                        <div class="alt-name">purplejoeAlt</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">purple joe</div>
+                                        <div class="alt-name">purplejoealt</div>
+                                    </td>
+                                    <td class="score">2</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">rkass</div>
+                                        <div class="alt-name">rkassrated</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">avanderwalde</div>
+                                        <div class="alt-name">avan</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">omegaxis</div>
+                                        <div class="alt-name">Cinnamoroll</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">indego</div>
+                                        <div class="alt-name">LeagueIndego</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">pianoblook</div>
+                                        <div class="alt-name">dapperblook</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">RIMBarisax</div>
+                                        <div class="alt-name">masteradept</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">wateroffire</div>
+                                        <div class="alt-name">hinomizu</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">beyoken</div>
+                                        <div class="alt-name">vermling</div>
+                                    </td>
+                                    <td class="score">1</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">joel</div>
+                                        <div class="alt-name">Ljoelw</div>
+                                    </td>
+                                    <td class="score">0</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="player-name">aitch2</div>
+                                        <div class="alt-name">h2-league</div>
+                                    </td>
+                                    <td class="score">0</td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
-        
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title mb-4">Longest Win Streak</h5>
-                    <p class="mb-0 player-name">Ramanujan1729</p>
-                    <p class="mt-1 alt-name">Ramanujan</p>
-                    <p class="score-large">20</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title mb-4">Most Hunted Scores</h5>
-                    <p class="mb-0 player-name">newduke</p>
-                    <p class="mt-1 alt-name">newdukeL</p>
-                    <p class="score-large">44</p>
-                </div>
-            </div>
-        </div>
-        
     </div>
 
-    <!-- Leaderboards -->
-    <div id="leaderboards" class="accordion">
-        
-        <div class="card">
-            <div class="card-header">
-                <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#playerrating">
-                    Player Rating
-                </button>
-            </div>
-            <div id="playerrating" class="collapse" data-parent="#leaderboards">
-                <div class="card-body">
-                    <table class="table table-striped">
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Markus</div>
-                                <div class="alt-name">MarkusKarlsen</div>
-                            </td>
-                            <td class="score">1711</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Ramanujan1729</div>
-                                <div class="alt-name">Ramanujan</div>
-                            </td>
-                            <td class="score">1705</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">spring</div>
-                                <div class="alt-name">PHLspring</div>
-                            </td>
-                            <td class="score">1655</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Sturm</div>
-                                <div class="alt-name">Draku</div>
-                            </td>
-                            <td class="score">1642</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">str8tsknacker</div>
-                                <div class="alt-name">str8forward</div>
-                            </td>
-                            <td class="score">1623</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">newduke</div>
-                                <div class="alt-name">newdukeL</div>
-                            </td>
-                            <td class="score">1581</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Neema</div>
-                                <div class="alt-name">Neempasta</div>
-                            </td>
-                            <td class="score">1551</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">HelanaAshryvr</div>
-                                <div class="alt-name">LeagueLana</div>
-                            </td>
-                            <td class="score">1477</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">TimeHoodie</div>
-                                <div class="alt-name">TwinHoodie</div>
-                            </td>
-                            <td class="score">1432</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">kimbifille</div>
-                                <div class="alt-name">nox</div>
-                            </td>
-                            <td class="score">1343</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">micerang</div>
-                                <div class="alt-name">miceranked</div>
-                            </td>
-                            <td class="score">1319</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Coco</div>
-                                <div class="alt-name">LeCoco</div>
-                            </td>
-                            <td class="score">1312</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">IAMJEFF</div>
-                                <div class="alt-name">shinymew</div>
-                            </td>
-                            <td class="score">1292</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">posij118</div>
-                                <div class="alt-name">posij119</div>
-                            </td>
-                            <td class="score">1291</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Yagami Black</div>
-                                <div class="alt-name">obiwan_kenobi</div>
-                            </td>
-                            <td class="score">1273</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">avanderwalde</div>
-                                <div class="alt-name">avan</div>
-                            </td>
-                            <td class="score">1272</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">rkass</div>
-                                <div class="alt-name">rkassrated</div>
-                            </td>
-                            <td class="score">1272</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Kyle</div>
-                                <div class="alt-name">Incogneato</div>
-                            </td>
-                            <td class="score">1240</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">eliclax</div>
-                                <div class="alt-name">eliclax_PHL</div>
-                            </td>
-                            <td class="score">1239</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">StKildaFan</div>
-                                <div class="alt-name">KildaScoreHunt</div>
-                            </td>
-                            <td class="score">1230</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">sin_faith</div>
-                                <div class="alt-name">sin_harmonic</div>
-                            </td>
-                            <td class="score">1230</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">WillFlame</div>
-                                <div class="alt-name">FlameWill</div>
-                            </td>
-                            <td class="score">1221</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">omegaxis</div>
-                                <div class="alt-name">Cinnamoroll</div>
-                            </td>
-                            <td class="score">1216</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">indego</div>
-                                <div class="alt-name">LeagueIndego</div>
-                            </td>
-                            <td class="score">1206</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Roeantste</div>
-                                <div class="alt-name">Roeleague</div>
-                            </td>
-                            <td class="score">1198</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">downvoid</div>
-                                <div class="alt-name">leftvoid</div>
-                            </td>
-                            <td class="score">1190</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">pianoblook</div>
-                                <div class="alt-name">dapperblook</div>
-                            </td>
-                            <td class="score">1189</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Elena</div>
-                                <div class="alt-name">TugaGirl</div>
-                            </td>
-                            <td class="score">1189</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">joel</div>
-                                <div class="alt-name">Ljoelw</div>
-                            </td>
-                            <td class="score">1180</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">RIMBarisax</div>
-                                <div class="alt-name">masteradept</div>
-                            </td>
-                            <td class="score">1152</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">wateroffire</div>
-                                <div class="alt-name">hinomizu</div>
-                            </td>
-                            <td class="score">1152</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">beyoken</div>
-                                <div class="alt-name">vermling</div>
-                            </td>
-                            <td class="score">1152</td>
-                        </tr>
-                        
-                    </table>
+    <div class="tab-pane fade" id="variants">
+        <div class="container my-5">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Variant</th>
+                        <th scope="col" class="text-center">Rating</th>
+                        <th scope="col" class="text-center">Games Played</th>
+                        <th scope="col" class="text-center">Max Scores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="text-center"><strong>No Variant</strong></td>
+                        <td class="text-center variant-rating">982</td>
+                        <td class="text-center">22</td>
+                        <td class="text-center">18</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Rainbow</strong></td>
+                        <td class="text-center variant-rating">1045</td>
+                        <td class="text-center">29</td>
+                        <td class="text-center">19</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Prism</strong></td>
+                        <td class="text-center variant-rating">1060</td>
+                        <td class="text-center">29</td>
+                        <td class="text-center">16</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>White</strong></td>
+                        <td class="text-center variant-rating">1068</td>
+                        <td class="text-center">16</td>
+                        <td class="text-center">11</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Muddy Rainbow</strong></td>
+                        <td class="text-center variant-rating">1122</td>
+                        <td class="text-center">18</td>
+                        <td class="text-center">13</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Pink</strong></td>
+                        <td class="text-center variant-rating">1139</td>
+                        <td class="text-center">42</td>
+                        <td class="text-center">20</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Brown</strong></td>
+                        <td class="text-center variant-rating">1127</td>
+                        <td class="text-center">37</td>
+                        <td class="text-center">21</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Light Pink</strong></td>
+                        <td class="text-center variant-rating">1246</td>
+                        <td class="text-center">25</td>
+                        <td class="text-center">13</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Omni</strong></td>
+                        <td class="text-center variant-rating">1244</td>
+                        <td class="text-center">26</td>
+                        <td class="text-center">13</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Null</strong></td>
+                        <td class="text-center variant-rating">1258</td>
+                        <td class="text-center">26</td>
+                        <td class="text-center">14</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="text-center"><strong>Clue Starved</strong></td>
+                        <td class="text-center variant-rating">1483</td>
+                        <td class="text-center">18</td>
+                        <td class="text-center">9</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="tab-pane fade" id="info">
+        <div class="container my-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="alert alert-info" role="alert">
+                            <h4 class="alert-heading">Welcome to the league!</h4>
+                            <p>The Test Season will be live from <strong>July 15th - August 31st!</strong></p>
+                            <hr>
+                            <p class="mb-0">Sign ups are now open <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDDW0Iz4pNHaQjqBpCuRsARJ1PE1kO85ndrvKte3irjCJhvw/viewform" class="alert-link">HERE</a>!</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <h3>About</h3>
+            <p>The Hanabi Pro Hunting League creates a new way for folks to play more "serious" Hanabi, but without the stress, formality, and scheduling headaches of normal tournaments. For folks of all skill levels, the most important goal is simply to compete against yourself and to constantly learn and improve!</p>
+            
+            <h3>How to Play</h3>
+            <p>Everyone is welcome to participate! To sign up, just click the link above to fill out the short Google Form. Just remember the following important info:</p>
+            <ul>
+              <li>Everyone joins <strong>individually</strong>, and can play with any mix of other participants.</li>
+              <li>League games must be played with a <strong>registered alt account</strong>.</li>
+              <li>ALL games played from this new account will be tracked each Season, so don’t forget to switch back when playing non-League games!</li>
+            </ul>
+            <p>All game data will be automatically tracked & recorded, so all you need to do is play! Make sure to check out this page for important game & League info.</p>
+            
+            <h3>Game Rules</h3>
+            <ul>
+              <li><strong>3-5 player games</strong> only</li>
+              <li><strong>5-6 suit games</strong> only, and only of the following variants (110 total!):
+                <ul>
+                  <li>No Variant, the 9 non-dark ‘special suits’, and all combinations</li>
+                  <li>All Clue Starved combinations</li>
+                </ul>
+              </li>
+              <li>Time or Untimed, but no alternate game modes or special rules (Bottom-Deck Blindplays, Empty Clues, Detrimental Chars, etc.)</li>
+            </ul>
+            <p>Only games with which follow these game rules and which include exclusively registered players will be tracked!</p>
+            
+            <h3>Introducing the Hanabi League Rating system!</h3>
+            <p>We’re excited to announce the new, experimental <strong>Hanabi League Rating</strong> (HLR) system! Adapted from Elo systems, the HLR basically works by estimating the expected outcome of each game. Each player will then gain or lose rating points based on how (un)likely the result was calculated to be.</p>
+            
+            <p>These estimates are based on the teammates’ ratings, versus the chosen variant’s estimated difficulty (variants have ratings too!).</p>
+            <ul>
+              <li>The system counts <strong>Max Scores</strong> as <em>Wins</em>; any other result is simply a <em>Loss</em>.</li>
+              <li>For the veteran glory-seekers, there will also be <strong>Leaderboards</strong> tracking a few popular stats. For now, these include <em><strong>Rating</strong></em>, <em><strong>Longest Win Streak</strong></em>, and <em><strong>Scores Hunted</strong></em>.</li>
+              <li>A few other fun stats will be tracked as well, just for curiosity’s sake.</li>
+              <li>All the player ratings, leaderboards, and variant stats will be tracked & updated automatically on this website.</li>
+            </ul>
         </div>
-        
-        <div class="card">
-            <div class="card-header">
-                <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#topstreak">
-                    Top Streak
-                </button>
-            </div>
-            <div id="topstreak" class="collapse" data-parent="#leaderboards">
-                <div class="card-body">
-                    <table class="table table-striped">
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Ramanujan1729</div>
-                                <div class="alt-name">Ramanujan</div>
-                            </td>
-                            <td class="score">20</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">spring</div>
-                                <div class="alt-name">PHLspring</div>
-                            </td>
-                            <td class="score">14</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Neema</div>
-                                <div class="alt-name">Neempasta</div>
-                            </td>
-                            <td class="score">13</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">HelanaAshryvr</div>
-                                <div class="alt-name">LeagueLana</div>
-                            </td>
-                            <td class="score">11</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Markus</div>
-                                <div class="alt-name">MarkusKarlsen</div>
-                            </td>
-                            <td class="score">8</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Sturm</div>
-                                <div class="alt-name">Draku</div>
-                            </td>
-                            <td class="score">8</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">str8tsknacker</div>
-                                <div class="alt-name">str8forward</div>
-                            </td>
-                            <td class="score">8</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">newduke</div>
-                                <div class="alt-name">newdukeL</div>
-                            </td>
-                            <td class="score">7</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">TimeHoodie</div>
-                                <div class="alt-name">TwinHoodie</div>
-                            </td>
-                            <td class="score">7</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">micerang</div>
-                                <div class="alt-name">miceranked</div>
-                            </td>
-                            <td class="score">7</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">posij118</div>
-                                <div class="alt-name">posij119</div>
-                            </td>
-                            <td class="score">7</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">StKildaFan</div>
-                                <div class="alt-name">KildaScoreHunt</div>
-                            </td>
-                            <td class="score">6</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">kimbifille</div>
-                                <div class="alt-name">nox</div>
-                            </td>
-                            <td class="score">5</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Coco</div>
-                                <div class="alt-name">LeCoco</div>
-                            </td>
-                            <td class="score">4</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">IAMJEFF</div>
-                                <div class="alt-name">shinymew</div>
-                            </td>
-                            <td class="score">4</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Yagami Black</div>
-                                <div class="alt-name">obiwan_kenobi</div>
-                            </td>
-                            <td class="score">4</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">eliclax</div>
-                                <div class="alt-name">eliclax_PHL</div>
-                            </td>
-                            <td class="score">3</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">sin_faith</div>
-                                <div class="alt-name">sin_harmonic</div>
-                            </td>
-                            <td class="score">3</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">downvoid</div>
-                                <div class="alt-name">leftvoid</div>
-                            </td>
-                            <td class="score">3</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">avanderwalde</div>
-                                <div class="alt-name">avan</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">rkass</div>
-                                <div class="alt-name">rkassrated</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Kyle</div>
-                                <div class="alt-name">Incogneato</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">WillFlame</div>
-                                <div class="alt-name">FlameWill</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Roeantste</div>
-                                <div class="alt-name">Roeleague</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">pianoblook</div>
-                                <div class="alt-name">dapperblook</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">RIMBarisax</div>
-                                <div class="alt-name">masteradept</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">wateroffire</div>
-                                <div class="alt-name">hinomizu</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">beyoken</div>
-                                <div class="alt-name">vermling</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">omegaxis</div>
-                                <div class="alt-name">Cinnamoroll</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">indego</div>
-                                <div class="alt-name">LeagueIndego</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Elena</div>
-                                <div class="alt-name">TugaGirl</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">joel</div>
-                                <div class="alt-name">Ljoelw</div>
-                            </td>
-                            <td class="score">0</td>
-                        </tr>
-                        
-                    </table>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-header">
-                <button class="btn btn-link btn-block text-left" data-toggle="collapse" data-target="#huntedscores">
-                    Hunted Scores
-                </button>
-            </div>
-            <div id="huntedscores" class="collapse" data-parent="#leaderboards">
-                <div class="card-body">
-                    <table class="table table-striped">
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">newduke</div>
-                                <div class="alt-name">newdukeL</div>
-                            </td>
-                            <td class="score">44</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">spring</div>
-                                <div class="alt-name">PHLspring</div>
-                            </td>
-                            <td class="score">39</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Ramanujan1729</div>
-                                <div class="alt-name">Ramanujan</div>
-                            </td>
-                            <td class="score">37</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Sturm</div>
-                                <div class="alt-name">Draku</div>
-                            </td>
-                            <td class="score">32</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">str8tsknacker</div>
-                                <div class="alt-name">str8forward</div>
-                            </td>
-                            <td class="score">22</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Markus</div>
-                                <div class="alt-name">MarkusKarlsen</div>
-                            </td>
-                            <td class="score">18</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Neema</div>
-                                <div class="alt-name">Neempasta</div>
-                            </td>
-                            <td class="score">18</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">downvoid</div>
-                                <div class="alt-name">leftvoid</div>
-                            </td>
-                            <td class="score">16</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">HelanaAshryvr</div>
-                                <div class="alt-name">LeagueLana</div>
-                            </td>
-                            <td class="score">13</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Yagami Black</div>
-                                <div class="alt-name">obiwan_kenobi</div>
-                            </td>
-                            <td class="score">12</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">TimeHoodie</div>
-                                <div class="alt-name">TwinHoodie</div>
-                            </td>
-                            <td class="score">11</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">micerang</div>
-                                <div class="alt-name">miceranked</div>
-                            </td>
-                            <td class="score">11</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Coco</div>
-                                <div class="alt-name">LeCoco</div>
-                            </td>
-                            <td class="score">9</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">StKildaFan</div>
-                                <div class="alt-name">KildaScoreHunt</div>
-                            </td>
-                            <td class="score">9</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">kimbifille</div>
-                                <div class="alt-name">nox</div>
-                            </td>
-                            <td class="score">6</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">posij118</div>
-                                <div class="alt-name">posij119</div>
-                            </td>
-                            <td class="score">6</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">IAMJEFF</div>
-                                <div class="alt-name">shinymew</div>
-                            </td>
-                            <td class="score">4</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">eliclax</div>
-                                <div class="alt-name">eliclax_PHL</div>
-                            </td>
-                            <td class="score">4</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Roeantste</div>
-                                <div class="alt-name">Roeleague</div>
-                            </td>
-                            <td class="score">4</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">sin_faith</div>
-                                <div class="alt-name">sin_harmonic</div>
-                            </td>
-                            <td class="score">3</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Kyle</div>
-                                <div class="alt-name">Incogneato</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">WillFlame</div>
-                                <div class="alt-name">FlameWill</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">Elena</div>
-                                <div class="alt-name">TugaGirl</div>
-                            </td>
-                            <td class="score">2</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">avanderwalde</div>
-                                <div class="alt-name">avan</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">rkass</div>
-                                <div class="alt-name">rkassrated</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">omegaxis</div>
-                                <div class="alt-name">Cinnamoroll</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">indego</div>
-                                <div class="alt-name">LeagueIndego</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">pianoblook</div>
-                                <div class="alt-name">dapperblook</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">RIMBarisax</div>
-                                <div class="alt-name">masteradept</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">wateroffire</div>
-                                <div class="alt-name">hinomizu</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">beyoken</div>
-                                <div class="alt-name">vermling</div>
-                            </td>
-                            <td class="score">1</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                <div class="player-name">joel</div>
-                                <div class="alt-name">Ljoelw</div>
-                            </td>
-                            <td class="score">0</td>
-                        </tr>
-                        
-                    </table>
-                </div>
-            </div>
-        </div>
-        
     </div>
 </div>
 
-  <!-- Bootstrap JavaScript dependencies -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container text-center">
+          <span class="text-muted">203 games | 35 players | Thanks for playing <3</span><br>
+          <span class="text-muted">Last updated: <span id="latestRun">2023-07-22T00:50:49+00:00</span></span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+
+    <script>
+      $(document).ready(function() {
+          $('.nav-link').on('shown.bs.tab', function(e) {
+              // Remove 'active' class from all nav-items
+              $('.nav-link').removeClass('active');
+
+              // Add 'active' class to the current nav-item
+              $(this).addClass('active');
+          });
+      });
+    </script>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          // Get the latest run date in UTC
+          var latestRunUtc = new Date(document.getElementById("latestRun").textContent);
+
+          // Convert it to the local timezone and format it
+          var latestRunLocal = latestRunUtc.toLocaleString("en-US", { month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" });
+
+          // Set the text content of the latestRun span to the local date
+          document.getElementById("latestRun").textContent = latestRunLocal;
+      });
+    </script>
+
 </body>
 </html>
