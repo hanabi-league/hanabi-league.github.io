@@ -9,7 +9,7 @@ import numpy as np
 
 from itertools import combinations
 
-import datetime
+from datetime import datetime, timezone
 
 class DataManager:
     def __init__(self):
@@ -169,7 +169,6 @@ class DataManager:
                     rows.append(row)
     
         if len(rows) > 0:
-            print(rows)
             game_data = pd.DataFrame(rows)
             
             # Just new games
@@ -214,6 +213,7 @@ class DataManager:
 
         if len(game_data) == 0:
             print("No games to parse. Exiting...")
+            self.constants['latest_run'] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
             return
         
         game_ids = game_data['game_id'].unique()
@@ -296,7 +296,7 @@ class DataManager:
             self.constants['total_games_played'] += 1
     
         self.constants['latest_game_id'] = game_id
-        self.constants['latest_run'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.constants['latest_run'] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     
         self.player_game_data = self.player_game_data.sort_values(['player_name', 'game_id'])
         self.player_game_data['player_game_number'] = self.player_game_data.groupby('player_name').cumcount() + 1
@@ -323,11 +323,14 @@ class DataManager:
         self.player_game_data = pd.DataFrame(columns=self.player_game_data.columns)
         self.player_game_data.to_csv('data/player_game_data.csv', index=False)
     
-        self.player_data['player_rating'] = self.constants['player_base_rating']
-        self.player_data['top_streak'] = 0
-        self.player_data['current_streak'] = 0
-        self.player_data['number_of_games'] = 0
-        self.player_data['number_of_max_scores'] = 0
+        # self.player_data['player_rating'] = self.constants['player_base_rating']
+        # self.player_data['top_streak'] = 0
+        # self.player_data['current_streak'] = 0
+        # self.player_data['number_of_games'] = 0
+        # self.player_data['number_of_max_scores'] = 0
+        # self.player_data.to_csv('data/player_data.csv', index=False)
+        
+        self.player_data = pd.DataFrame(columns=self.player_data.columns)
         self.player_data.to_csv('data/player_data.csv', index=False)
     
         self.variant_data['variant_rating'] = self.variant_data['variant_name'].map(self.constants['variant_base_ratings'])
