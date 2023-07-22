@@ -1,5 +1,7 @@
 import pandas as pd
 from jinja2 import Environment, FileSystemLoader
+import json
+from datetime import datetime, timezone
 
 def build_leaderboard(player_data, player_game_data):
     joined_data = pd.merge(player_data, player_game_data, on='player_name', how='left')
@@ -59,17 +61,37 @@ def build_leaderboard(player_data, player_game_data):
 def main():
     player_data = pd.read_csv('data/player_data.csv')
     player_game_data = pd.read_csv('data/player_game_data.csv')
+    variant_data = pd.read_csv('data/variant_data.csv')
     if len(player_game_data) == 0:
         return
 
+    with open('data/constants.json', 'r') as f:
+        constants = json.load(f)
+
     player_data = player_data[player_data['number_of_games'] > 0]
+    variant_data = variant_data[variant_data['number_of_games_variant'] > 0]
+
+    total_players = player_data['player_name'].nunique()
 
     leaderboards, leaders = build_leaderboard(player_data, player_game_data)
+    variants = variant_data.to_dict('records')
+
+    latest_run_utc = datetime.fromisoformat(constants['latest_run'])
+    latest_run_utc_formatted = latest_run_utc.isoformat()
     
     # Jinja things
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('content.html')
-    rendered_html = template.render(leaders=leaders, leaderboards=leaderboards)
+    # rendered_html = template.render(leaders=leaders, leaderboards=leaderboards, variants=variants)
+    rendered_html = template.render(
+        leaders=leaders, 
+        leaderboards=leaderboards, 
+        variants=variants,
+        total_games_played=constants['total_games_played'],
+        latest_run=latest_run_utc_formatted,
+        total_players=total_players
+    )
+
     with open('index.html', 'w') as f:
         f.write(rendered_html)
 
