@@ -1,12 +1,12 @@
 variant_name,variant_rating,number_of_games_variant,number_of_max_scores_variant
-No Variant,1010.7575792649455,68,52
-Rainbow,1035.4276179887956,51,31
-Prism,1054.1990670525174,39,22
-White,1129.0291773636766,34,18
-Muddy Rainbow,1143.464057998374,27,16
-Pink,1150.0177654097372,82,37
-Brown,1120.512937938253,69,37
-Light Pink,1220.5813886503686,67,30
-Omni,1196.937104479607,39,21
-Null,1202.7718104864452,37,22
-Clue Starved,1455.5506948353498,78,31
+No Variant,1000,0,0
+Rainbow,1100,0,0
+Prism,1100,0,0
+White,1100,0,0
+Muddy Rainbow,1200,0,0
+Pink,1200,0,0
+Brown,1200,0,0
+Light Pink,1300,0,0
+Omni,1300,0,0
+Null,1400,0,0
+Clue Starved,1600,0,0

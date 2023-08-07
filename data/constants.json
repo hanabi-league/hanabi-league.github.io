@@ -22,7 +22,7 @@
     "starting_game_id": 990000,
     "ending_game_id": 9999999,
     "starting_time": "2023-07-15 06:00:00 EST",
-    "latest_game_id": 1005704,
-    "total_games_played": 395,
-    "latest_run": "2023-08-07T20:51:36+00:00"
+    "latest_game_id": 989999,
+    "total_games_played": 0,
+    "latest_run": null
 }
