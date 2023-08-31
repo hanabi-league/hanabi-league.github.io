@@ -151,6 +151,7 @@ class DataManager:
                     and not game["options"]["allOrNothing"]
                     and not game["options"]["detrimentalCharacters"]
                     and datetime_started >= parse(self.constants['starting_time'], tzinfos={'EST': 'US/Eastern'})
+                    and datetime_ended >= parse(self.constants['ending_time'], tzinfos={'EST': 'US/Eastern'})
                 ):
                     row = {
                         "game_id": game["id"],
